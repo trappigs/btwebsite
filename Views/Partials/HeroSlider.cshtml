@@ -1,0 +1,115 @@
+﻿<style>
+    /* Stilsiz İçerik Pırıltısını (FOUC) önlemek için kritik kural */
+    .hero-slider .slide-title-line > span {
+        transform: translateY(110%);
+        display: block;
+    }
+</style>
+
+<link rel="stylesheet" href="/css/hero-slider.css">
+
+
+<div class="hero-slider" id="heroSlider">
+    <div class="slider-container">
+        <div class="slide active" data-bg="/media/gsyjjygd/bereketli-topraklar-tanitim-manzarasi.webp" data-title="Bereketli Topraklar ile Geleceğinize" data-subtitle="Güvenle Yatırım Yapın" data-location="Balıkesir">
+            <div class="slide-content">
+                <div class="content-wrapper">
+                    <h1 class="slide-title">
+                        <span class="slide-title-line">Bereketli Topraklar ile</span>
+                        <span class="slide-title-line"><span class="highlight">Geleceğinize</span></span>
+                        <span class="slide-title-line"><span class="subtitle">Güvenle Yatırım Yapın</span></span>
+                    </h1>
+                    <div class="slide-actions">
+                        <a href="/projeler" class="btn btn-primary">PROJELERİMİZİ İNCELEYİN</a>
+                        <a href="#contact-sec" class="btn btn-secondary">FORM DOLDURUN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" data-bg="/media/3zgncqd5/bereketli-topraklar-tanitim-manzarasi-guven-ve-seffaflik.webp" data-title="Dört Mevsim Huzuru Hissedin" data-subtitle="Aqua Dikili" data-location="Dikili">
+            <div class="slide-content">
+                <div class="content-wrapper">
+                    <h1 class="slide-title">
+                        <span class="slide-title-line">Dört Mevsim</span>
+                        <span class="slide-title-line"><span class="highlight">Huzuru Hissedin</span></span>
+                        <span class="slide-title-line"><span class="subtitle">Aqua Dikili</span></span>
+                    </h1>
+                    <div class="slide-actions">
+                        <a href="/aqua-dikili" class="btn btn-primary">PROJE DETAY</a>
+                        <a href="#contact-sec" class="btn btn-secondary">İLETİŞİME GEÇİN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" data-bg="/media/zv5ljsf2/ai-generated-3-kopya.webp" data-title="Doğanın Kalbinde Yerinizi Alın" data-subtitle="Ilıcaboğazı" data-location="Susurluk">
+            <div class="slide-content">
+                <div class="content-wrapper">
+                    <h1 class="slide-title">
+                        <span class="slide-title-line">Doğanın Kalbinde</span>
+                        <span class="slide-title-line"><span class="highlight">Yerinizi Alın</span></span>
+                        <span class="slide-title-line"><span class="subtitle">Ilıcaboğazı</span></span>
+                    </h1>
+                    <div class="slide-actions">
+                        <a href="/panora-ilicabogazi" class="btn btn-primary">PROJE DETAY</a>
+                        <a href="#contact-sec" class="btn btn-secondary">RANDEVU ALIN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- yeni ekleedim -->
+        <div class="slide" data-bg="/media/hdrme5rc/ai-generated-4-kopya.webp" data-title="Termal Bölgede Rahatlayın" data-subtitle="İbiller" data-location="Sındırgı">
+            <div class="slide-content">
+                <div class="content-wrapper">
+                    <h1 class="slide-title">
+                        <span class="slide-title-line">Termal Bölgede</span>
+                        <span class="slide-title-line"><span class="highlight">Rahatlayın</span></span>
+                        <span class="slide-title-line"><span class="subtitle">Verda İbiller</span></span>
+                    </h1>
+                    <div class="slide-actions">
+                        <a href="/verda-ibiller" class="btn btn-primary">PROJE DETAY</a>
+                        <a href="#contact-sec" class="btn btn-secondary">RANDEVU ALIN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-navigation">
+        <button class="nav-btn prev-btn" id="prevBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="nav-preview prev-preview" id="prevPreview">
+                <div class="preview-image"></div>
+                <div class="preview-content"><div class="preview-title"></div><div class="preview-subtitle"></div></div>
+            </div>
+        </button>
+        <button class="nav-btn next-btn" id="nextBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="nav-preview next-preview" id="nextPreview">
+                <div class="preview-image"></div>
+                <div class="preview-content"><div class="preview-title"></div><div class="preview-subtitle"></div></div>
+            </div>
+        </button>
+    </div>
+
+    <div class="slider-pagination">
+        <span class="pagination-dot active" data-slide="0"></span>
+        <span class="pagination-dot" data-slide="1"></span>
+        <span class="pagination-dot" data-slide="2"></span>
+        <span class="pagination-dot" data-slide="3"></span>
+    </div>
+
+    <a href="#projectsSection" class="scroll-indicator">
+        <div class="scroll-text">Projelerimiz</div>
+        <div class="scroll-arrow"><svg width="16" height="24" viewBox="0 0 16 24" fill="none"><path d="M8 2V22M8 22L2 16M8 22L14 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+
+    <div class="slide-progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+
+<script src="/Scripts/hero-slider.js"></script>
