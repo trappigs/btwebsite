@@ -9,12 +9,14 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
 @font-face {
   font-family: 'Lato'; /* Fontunuza bir isim verin */
   src: url('/fonts/latoregular.ttf') format('truetype'); /* Dosyanın yolunu belirtin */
   font-weight: normal;
   font-style: normal;
 }
+
 .section-header {
     text-align: center;
     margin-bottom: 60px;
@@ -27,7 +29,15 @@
     line-height: 1.2;
     letter-spacing: 1.5px;
 }
-.title-main { color: #000000; }
+
+.title-main { 
+    background-color: #045129;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 28px;
+    display: inline-block;
+}
+
 .title-highlight { color: #045129; margin-left: 0.5rem; }
 .section-subtitle { font-size: 1.1rem; color: #666; margin: 0; font-weight: 400; }
 
@@ -45,6 +55,8 @@
     border-radius: 16px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
     overflow: hidden;
+    position: relative; /* Görselin tüm kartı kaplaması için */
+    height: 400px; /* Sabit yükseklik */
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -57,43 +69,161 @@
 
 /* Üst Başlık Alanı */
 .card-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 20px;
     text-align: center;
-    background-color: #fff;
-    border-bottom: 1px solid #f0f0f0;
+    background: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35));
+    z-index: 10; /* Başlık her zaman üstte */
 }
 
 .card-title {
     font-family: 'Lato', sans-serif;
     font-size: 1.5rem !important;
-    font-weight: 400;
-    color: #000000;
+    font-weight: 600;
+    color: #045129 !important;
     margin: 0;
     letter-spacing: 1.2px;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    position: relative;
+    z-index: 11; /* Başlık metni en üstte */
 }
-
-/* Görsel Alanı */
+.project-card:hover .card-title{
+    color: white !important;
+}
+/* Görsel Alanı - Tüm kartı kaplayan */
 .card-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 250px; /* Görsel yüksekliğini ayarlayabilirsiniz */
-    overflow: hidden;
+    height: 100%;
+    z-index: 1; /* En altta */
 }
 
 .card-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Alt Buton Alanı */
+/* Açıklama Overlay'i */
+.card-description-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35); /* Daha koyu arka plan */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 80px; /* Başlık için alan bırak */
+    padding-bottom: 80px; /* Butonlar için alan bırak */
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2; /* Görsel üstünde, butonlar altında */
+}
+
+.project-card:hover .card-image-container img {
+    transform: scale(1.05); /* Hover'da görseli hafifçe büyüt */
+    filter: brightness(0.7); /* Görseli karart */
+}
+
+.project-card:hover .card-description-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-description-overlay p {
+    margin: 0;
+    font-weight: 300;
+}
+
+/* KONUT Badge */
+.konut-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #045129;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 12; /* En üstte görünsün */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.konut-badge i {
+    color: #FFD700; /* Altın sarısı yıldız */
+    font-size: 0.9rem;
+}
+
+.konut-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Alt Footer Alanı (Butonlar) */
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 20px;
+}
+
+/* Konum Badge - KONUT badge'i gibi ama sol altta */
+.location-info {
+    position: absolute;
+    bottom: 90px; /* Butonların üstünde */
+    left: 15px;
+    background: #045129;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 12;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.location-info i {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.location-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Buton Alanı */
 .card-actions {
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding: 20px;
-    background-color: #fff;
-    margin-top: auto; /* Kart yüksekliği değişse bile butonları en alta sabitler */
-    border-top: 1px solid #f0f0f0;
 }
 
 .btn {
@@ -106,6 +236,8 @@
     transition: all 0.25s ease;
     cursor: pointer;
     text-decoration: none;
+    position: relative;
+    z-index: 11; /* Butonlar en üstte tıklanabilir */
 }
 
 /* "Projeyi İncele" Butonu (Mavi, İçi Dolu) */
@@ -123,7 +255,7 @@
 
 /* "Form Doldurun" Butonu (Yeşil, Kenarlıklı) */
 .btn-secondary {
-    background-color: transparent;
+    background-color: white;
     border-color: #045129;
     color: #045129;
 }
@@ -133,61 +265,64 @@
     color: white;
 }
 
+/* "Tüm Projeleri Göster" Butonu */
+.view-all-btn-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.view-all-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: #045129;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid #045129;
+}
+
+.view-all-btn:hover {
+    background-color: white;
+    color: #045129;
+}
+
 /* Responsive Tasarım */
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
- 
     }
-}
-
-
-
-
-/* --- KART ÜZERİNE GELİNCE AÇIKLAMA EFEKTİ --- */
-.card-image-container {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Görsel yüksekliği */
-    overflow: hidden;
-}
-
-.card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease; /* Görselin solması için geçiş */
-}
-
-.card-description-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Yarı saydam siyah arka plan */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    opacity: 0; /* Başlangıçta gizli */
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.project-card:hover .card-image-container img {
-    opacity: 0.7; /* Fareyle gelince görseli hafifçe soluklaştır */
-}
-
-.project-card:hover .card-description-overlay {
-    opacity: 1; /* Fareyle gelince açıklamayı görünür yap */
-    visibility: visible;
-}
-
-.card-description-overlay p {
-    margin: 0;
+    
+    .project-card {
+        height: 350px; /* Mobilde biraz daha kısa */
+    }
+    
+    .card-title {
+        font-size: 1.3rem !important;
+        color: #045129;
+    }
+    
+    .card-description-overlay {
+        padding: 20px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        font-size: 0.9rem;
+    }
+    
+    .card-footer {
+        padding: 15px;
+    }
+    
+    .location-info {
+        bottom: 60px; /* Mobilde butonlara daha yakın */
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+    
+    .btn {
+        padding: 8px 20px;
+        font-size: 0.75rem;
+    }
 }

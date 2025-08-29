@@ -3,7 +3,57 @@
 @{
     Layout = "masterLayout.cshtml";
     ViewBag.Title = Model.Value("profileName")?.ToString() ?? "Profil";
+    
+    var profileName = Model.Value("profileName")?.ToString();
+    var profileTitle = Model.Value("profileTitle")?.ToString();
+    var profileDescription = Model.Value("profileDescription")?.ToString()?.StripHtml();
+    var profilePictureUrl = "";
+    if (Model.HasValue("profilPicture"))
+    {
+        var profilePictureImage = Model.Value<IPublishedContent>("profilPicture");
+        profilePictureUrl = profilePictureImage?.Url() ?? "";
+    }
+    else
+    {
+        profilePictureUrl = "/media/tcvmglv5/1fotoğraf.jpg";
+    }
+
+    // canonical url kontrolü
+    var canonicalLink = Model.Value<string>("canonicalLink");
+    var absoluteUrl = Umbraco.AssignedContentItem.Url(mode: UrlMode.Absolute);
+    var finalUrl = !string.IsNullOrWhiteSpace(canonicalLink) ? canonicalLink : absoluteUrl;
+
+    var createdDate = Model.CreateDate.ToString("yyyy-MM-ddTHH:mm:ssZ");
+    var modifiedDate = Model.UpdateDate.ToString("yyyy-MM-ddTHH:mm:ssZ");
 }
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ProfilePage",
+  "name": "@profileName'in Profili",
+  "dateCreated": "@createdDate",
+  "dateModified": "@modifiedDate",
+  "url": "@finalUrl",
+  "mainEntity": {
+    "@@type": "Person",
+    "name": "@profileName",
+    "jobTitle": "@profileTitle",
+    "description": "@profileDescription",
+    "image": "@profilePictureUrl",
+    "worksFor": {
+      "@@type": "Organization",
+      "name": "Bereketli Topraklar"
+    },
+    "url": "@finalUrl"
+  }
+}
+</script>
+
+
+
+
+
 
 <style>
 /* Profile Page Styles */
@@ -345,7 +395,6 @@
             <div class="profile-photo-section">
                 <div class="profile-photo">
                     @{
-                        var profilePictureUrl = "";
                         if (Model.HasValue("profilPicture"))
                         {
                             var profilePictureImage = Model.Value<IPublishedContent>("profilPicture");

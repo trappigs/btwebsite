@@ -28,11 +28,19 @@
                     <a href="/ekibimiz/" class="dropdown-item @(Model.Url().StartsWith("/ekibimiz") ? "active" : "")">Ekibimiz</a>
                 </div>
             </div>
-
+            <div class="nav-item-wrapper">
+                <a href="#" class="nav-item has-dropdown @(Model.Url().StartsWith("/projeler") ? "active" : "")">
+                        Projeler
+                    <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
             @* Projelerimiz - Tek Link *@
-            <a href="/projeler/" class="nav-item @(Model.Url().StartsWith("/projeler") ? "active" : "")">
-                Projeler
-            </a>
+                    <a href="/arsa/" class="dropdown-item">Arsa</a>
+                    <a href="/konut/" class="dropdown-item">Konut</a>
+                </div>
+            </div>
 
             @* Sürdürülebilirlik Dropdown *@
             <div class="nav-item-wrapper">
