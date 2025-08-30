@@ -152,8 +152,8 @@
 /* KONUT Badge */
 .konut-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 19px;
+    right: 10px;
     background: #045129;
     color: white;
     padding: 8px 15px;
@@ -161,7 +161,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: 0.60rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     z-index: 12; /* En üstte görünsün */
@@ -192,12 +192,12 @@
 /* Konum Badge - KONUT badge'i gibi ama sol altta */
 .location-info {
     position: absolute;
-    bottom: 90px; /* Butonların üstünde */
+    bottom: 70px; /* Butonların üstünde */
     left: 15px;
-    background: #045129;
+    background: rgba(0, 0, 0, 0.3);
     color: white;
     padding: 8px 15px;
-    border-radius: 25px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -208,7 +208,11 @@
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
 }
-
+@media(min-width:768px){
+    .location-info {
+        left: 20px;
+    }
+}
 .location-info i {
     color: white;
     font-size: 0.9rem;
@@ -227,7 +231,7 @@
 }
 
 .btn {
-    padding: 10px 24px;
+    padding: 10px 19px !important;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -317,12 +321,13 @@
     
     .location-info {
         bottom: 60px; /* Mobilde butonlara daha yakın */
+        left: 23px;
         font-size: 0.7rem;
         padding: 6px 12px;
     }
     
     .btn {
-        padding: 8px 20px;
-        font-size: 0.75rem;
+        padding: 8px 37px;
+        font-size: 0.70rem;
     }
 }

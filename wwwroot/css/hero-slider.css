@@ -697,3 +697,5 @@
 .scroll-indicator:hover {
     transform: translateY(5px) translateX(-50%); /* Tıklanabilirliği belirtmek için hafif bir hover efekti */
 }
+
+

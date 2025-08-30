@@ -1239,3 +1239,245 @@
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
+
+
+/* projectDetailPage.cshtml dosyasının <style> bölümüne eklenecek CSS */
+
+.other-projects-section {
+    padding: 80px 0;
+    background-color: #e9e8e6;
+    border-top: 1px solid #e0e0e0;
+}
+
+.other-projects-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.other-projects-section .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.other-projects-section .section-title {
+    font-size: 2.8rem;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+}
+
+/* Diğer projeler için kart grid düzeni */
+.other-projects-section .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Diğer projeler bölümündeki kartlar için stiller */
+.other-projects-section .project-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.other-projects-section .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Kart başlığı */
+.other-projects-section .card-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35));
+    z-index: 10;
+}
+
+.other-projects-section .card-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    color: #045129 !important;
+    margin: 0;
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    position: relative;
+    z-index: 11;
+}
+
+.other-projects-section .project-card:hover .card-title {
+    color: white !important;
+}
+
+/* Görsel alanı */
+.other-projects-section .card-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.other-projects-section .card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.other-projects-section .project-card:hover .card-image-container img {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+}
+
+/* Açıklama overlay'i */
+.other-projects-section .card-description-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2;
+}
+
+.other-projects-section .project-card:hover .card-description-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.other-projects-section .card-description-overlay p {
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Kart altındaki buton alanı */
+.other-projects-section .card-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Buton stilleri */
+.other-projects-section .btn {
+    padding: 10px 19px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1.5px solid;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    z-index: 11;
+}
+
+.other-projects-section .btn-primary {
+    background-color: #045129;
+    border-color: #045129;
+    color: white;
+}
+
+.other-projects-section .btn-primary:hover {
+    background-color: white;
+    color: #045129;
+    border-color: #045129;
+}
+
+.other-projects-section .btn-secondary {
+    background-color: white;
+    border-color: #045129;
+    color: #045129;
+}
+
+.other-projects-section .btn-secondary:hover {
+    background-color: #045129;
+    color: white;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+    .other-projects-section .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .other-projects-section .project-card {
+        height: 350px;
+    }
+    
+    .other-projects-section .card-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .other-projects-section .card-description-overlay {
+        padding: 20px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        font-size: 0.9rem;
+    }
+    
+    .other-projects-section .card-actions {
+        padding: 0 15px;
+        bottom: 15px;
+    }
+    
+    .other-projects-section .btn {
+        padding: 8px 20px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Tüm projeleri göster butonu */
+.other-projects-section .btn-primary:not(.btn-secondary) {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: #045129;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid #045129;
+}
+
+.other-projects-section .btn-primary:not(.btn-secondary):hover {
+    background-color: white;
+    color: #045129;
+}

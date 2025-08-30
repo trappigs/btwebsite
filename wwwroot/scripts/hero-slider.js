@@ -128,7 +128,8 @@
     }
 
     function setupSlideAnimations(slide, index) {
-        const elements = slide.querySelectorAll('.slide-title, .slide-actions, .location-pin, .floating-card');
+        const elements = slide.querySelectorAll('.slide-title, .badge-row, .slide-actions, .location-pin, .floating-card');
+
 
         elements.forEach((element, i) => {
             element.style.animationDelay = `${0.3 + (i * 0.3)}s`;
@@ -265,7 +266,8 @@
     }
 
     function resetSlideAnimations(slide) {
-        const animatedElements = slide.querySelectorAll('.slide-title, .slide-actions, .location-pin, .floating-card');
+        const animatedElements = slide.querySelectorAll('.slide-title, .badge-row, .slide-actions, .location-pin, .floating-card, .badge');
+
         animatedElements.forEach(element => {
             element.style.animation = 'none';
             element.offsetHeight; // Trigger reflow
