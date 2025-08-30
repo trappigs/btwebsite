@@ -148,6 +148,7 @@
     justify-content: center;
     padding: 1rem 2rem;
     border: none;
+    background-color: #045129;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
@@ -699,3 +700,26 @@
 }
 
 
+.svg-row {
+  display: flex;
+  justify-content: space-around; /* eşit boşluk bırakır */
+  align-items: center;
+  gap: 10px;
+}
+
+/* SVG'ler her zaman yan yana kalsın */
+.svg-row img {
+  width: 30%;   /* 3 SVG için uygun */
+  height: auto; /* orantıyı korur */
+  max-width: 200px; /* çok büyümemesi için sınır */
+  min-width: 80px;  /* çok küçülmemesi için sınır */
+}
+@media(min-width: 1400px){
+    .svg-row{
+        justify-content: start;
+    }
+    .svg-row img{
+        margin-right: 40px;
+    max-width: 125px;
+    }
+}
